@@ -1,5 +1,7 @@
 # terraform-provider-gitfile
 
+[![Actions Status](https://github.com/Yelp/terraform-provider-gitfile/workflows/release/badge.svg)](https://github.com/Yelp/terraform-provider-gitfile/actions)
+
 ## Synopsis
 
 A [Terraform](http://terraform.io) plugin to manage files in git repositories.
