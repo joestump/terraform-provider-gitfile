@@ -1,0 +1,35 @@
+name: release
+on: [push]
+jobs:
+
+  build:
+    name: Release
+    runs-on: ubuntu-18.04
+    steps:
+
+    - name: Set up Go 1.12
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.12
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Unit-testing
+      run: make test
+
+    - name: Acceptance testing
+      run: make testacc
+
+    - name: Build
+      if: startsWith(github.ref, 'refs/tags/')
+      run: make build
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: terraform-provider-gitfile
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

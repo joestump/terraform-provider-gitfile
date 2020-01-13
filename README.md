@@ -1,6 +1,6 @@
 # terraform-provider-gitfile
 
-[![Build Status](https://travis-ci.org/Yelp/terraform-provider-gitfile.svg?branch=master)](https://travis-ci.org/Yelp/terraform-provider-gitfile)
+[![Actions Status](https://github.com/joestump/terraform-provider-gitfile/workflows/release/badge.svg)](https://github.com/joestump/terraform-provider-gitfile/actions)
 
 ## Synopsis
 
