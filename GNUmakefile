@@ -4,9 +4,12 @@ GOFMT_FILES?=$$(find . -name '*.go' |grep -v vendor)
 PKG_NAME=gitfile
 WEBSITE_REPO=github.com/hashicorp/terraform-website
 
-default: build
+default: install
 
 build: fmtcheck
+	go build
+
+install: fmtcheck
 	go install
 
 sweep:
@@ -66,4 +69,4 @@ ifeq (,$(wildcard $(GOPATH)/src/$(WEBSITE_REPO)))
 endif
 	@$(MAKE) -C $(GOPATH)/src/$(WEBSITE_REPO) website-provider-test PROVIDER_PATH=$(shell pwd) PROVIDER_NAME=$(PKG_NAME)
 
-.PHONY: build sweep test testacc fmt fmtcheck lint tools test-compile website website-lint website-test
+.PHONY: build install sweep test testacc fmt fmtcheck lint tools test-compile website website-lint website-test
